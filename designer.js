@@ -1,32 +1,39 @@
-let drawingSquare;
-let yarnWeight
+let yarnWeight;
+let stitchCounter;
 
 //begins the drawing
 function setup() {
 	createCanvas(windowWidth,windowHeight);
 	noStroke();
 	resetSketch();
-	rectMode(CENTER);
 
-	// determines if the screen is landscape or portrait
-	if (windowHeight > windowWidth) {
-		drawingSquare = windowWidth;
-	}
-	else{
-		drawingSquare = windowHeight;
-	}
-
-	//bases the width of each stitch on the size of the window
-	yarnWeight = drawingSquare/40;
-
+	yarnWeight = windowWidth/100;
+	stitchCounter = yarnWeight * 4;
 }
 
 //this is the main function of this program
 function draw () {
 
-	//main square
-	fill(255);
-	rect(windowWidth/2, windowHeight/2, drawingSquare*0.9, drawingSquare*0.9);
+	stroke(255);
+	fill(255,100,100);
+
+	for (i = 0; i < windowHeight; i = i+stitchCounter) {
+		rect(0, 0, yarnWeight, stitchCounter);
+		translate(0,stitchCounter);
+	}
+	// {
+	// 	translate(yarnWeight, -1 * stitchCounter);
+	// 	rect(0, 0, yarnWeight, stitchCounter);
+	// }
+
+	// for (i = 0; i < windowHeight; i = i + yarnWeight*4) {
+	// 	if (i < windowHeight) {
+	// 		rect(0, 0+i, yarnWeight, yarnWeight*4);
+	// 	}
+	// 	if (i > windowHeight) {
+	// 		translate(yarnWeight, -1 * windowHeight);
+	// 	}
+	// }
 
 }
 
