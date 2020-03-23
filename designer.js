@@ -17,23 +17,19 @@ function draw () {
 	stroke(255);
 	fill(255,100,100);
 
-	for (i = 0; i < windowHeight; i = i+stitchCounter) {
-		rect(0, 0, yarnWeight, stitchCounter);
-		translate(0,stitchCounter);
+	//this draws the odd columns of stitches
+	for (j = 0; j < windowWidth; j = j + yarnWeight*2) {
+		for (i = 0; i < windowHeight; i = i+stitchCounter) {
+			rect(j, i, yarnWeight, stitchCounter);
+		}
 	}
-	// {
-	// 	translate(yarnWeight, -1 * stitchCounter);
-	// 	rect(0, 0, yarnWeight, stitchCounter);
-	// }
 
-	// for (i = 0; i < windowHeight; i = i + yarnWeight*4) {
-	// 	if (i < windowHeight) {
-	// 		rect(0, 0+i, yarnWeight, yarnWeight*4);
-	// 	}
-	// 	if (i > windowHeight) {
-	// 		translate(yarnWeight, -1 * windowHeight);
-	// 	}
-	// }
+	//this draws the even number of stitches
+	for (j = yarnWeight; j < windowWidth; j = j + yarnWeight*2) {
+		for (i = -.5*stitchCounter; i < windowHeight; i = i+stitchCounter) {
+			rect(j, i, yarnWeight, stitchCounter);
+		}
+	}
 
 }
 
